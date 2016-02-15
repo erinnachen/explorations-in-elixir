@@ -1,0 +1,97 @@
+# Book Review: Programming Elixir 1.2
+
+### Interesting quotes and comments:
+>The Elixir programming language wraps functional programming with
+immutable state and an actor-based approach to concurrency in a tidy,
+modern syntax. And it runs on the industrial-strength, high-performance,
+distributed Erlang VM. But what does all that mean?
+
+Yes Dave, what does this mean?
+
+> If we want, we can make these functions run in parallel—Elixir has a simple
+but powerful mechanism for passing messages between them. And these are
+not your father’s boring old processes or threads—we’re talking about the
+potential to run millions of them on a single machine and have hundreds of
+these machines interoperating. Bruce Tate commented on this paragraph
+with this thought: “Most programmers treat threads and processes as a necessary
+evil; Elixir developers feel they are an important simplification.”
+
+> As some folks fret over such things, the Elixir convention is to use two-column
+indentation and spaces (not tabs).
+
+Love it!
+
+> Elixir is great for writing highly parallel, reliable
+applications.
+But to be a great language for parallel programming,
+a language first has to be great for conventional,
+sequential programming. In this part of the
+book we’ll cover how to write Elixir code, and we’ll
+explore the idioms and conventions that make Elixir
+so powerful. (pg 12)
+
+> Joe Armstrong, Erlang’s creator, compares the equals sign in Erlang to that
+used in algebra. When you write the equation x = a + 1, you are not assigning
+the value of a + 1 to x. Instead you’re simply asserting that the expressions
+x and a + 1 have the same value. If you know the value of x, you can work
+out the value of a, and vice versa. (pg 20)
+
+### Questions to explore:
+1. Functional programming
+2. Industrial-strength, high-performance distributed Erlang VM
+3. Providing Macros
+4. Meta-programming
+5. Poly morphism
+6. Tooling
+7. How do I check which version of Elixir I'm on (1.2?)
+8. Garbage collection
+9. Lexical scope
+
+### Notes:
+* Transform data instead of hiding it
+* convention for naming files: .ex: compiled into bytecodes, .exs programs in scripting languages, interpreted at the source level
+* can run in iex with "c filename", c will return an array(?) of any modules included in the source file
+* = is not assignment, it is a match operator erf....
+* list created using brackets, seem to flexible in type
+* _ is a wild card character
+* ^ is the pin operator, maintains a value of a variable
+* ALL VALUES are immutable, always transform data
+* Elixir’s built-in types are:
+  * Value types:
+    * Arbitrary-sized integers
+    * Floating-point numbers: need a digit before and after the decimal point
+      * 16 digits of precision, maximum exponent ~10^308
+    * Atoms: constants that represent something's name, start with a leading colon followed by an atom word
+      * atom word is a sequence of letters, digits, underscores, or @.
+      * atom if starting with a letter, it must be lowercase
+      * may end with a question mark or exclamation point
+      * arbitrary characters can be used by enclosing the characters following the colon in double quotes
+    * Ranges start..end
+      * to iterate of the values, the start and end need to be integers
+    * Regular expressions
+  * System types:
+    * PID: reference to a local or remote process
+    * port: reference to a resource that you'll be reading or writing
+    * References: make_ref creates a unique global reference.
+  * Collection types: Immutable, and can hold values of any type
+    * Tuples: ordered collection of values {2, 3, 5}
+      * typically 2-4 elements
+    * Lists: linked data structure (NOT AN ARRAY)
+    * Maps: collection of key/value pairs
+      * Looks like: %{ key => value, key => value }
+    * Binaries
+  * Functions
+
+  * Not types:
+    * strings
+    * structures
+### Examples?
+iex (interactive elixir)
+exiting iex: ctrl-c twice, or ctrl-g followed by q and return
+List operators:
+  * [1, 2, 3 ] ++ [4, 5, 6] concatenation
+  * [1, 2, 3, 4] -- [2, 4]  difference
+  * 1 in [1, 2, 3, 4]       membership
+(Simple) Lists of key value pairs:
+  * [ name: "Dave", city: "Dallas", likes: "Programming" ] becomes: [ {:name, "Dave"}, {:city, "Dallas"}, {:likes, "Programming"} ]
+  * the [] brackets can be left up when the list is the last argument.
